@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INCTL Knitting Technical Work Monitoring · Impress Newtex</title>
+  <meta name="description" content="Start/stop tracking for knitting technical jobs, Excel import and a performance dashboard for Impress Newtex Composite Textile Ltd.">
+  <link rel="icon" href="public/brand/logo.jpg">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --ink: #14213d;
+      --muted: #5b6785;
+      --card: #ffffff;
+      --line: rgba(20, 33, 61, 0.12);
+      --red: #ed1c24;
+      --teal: #5cc8d7;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(135deg, #0b1220 0%, #14213d 60%, #1d3461 100%);
+      color: #fff;
+      padding: 56px 20px 64px;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    .brand { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .brand img {
+      width: 84px; height: 84px; object-fit: contain;
+      background: #fff; border-radius: 18px; padding: 6px;
+    }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 36px); line-height: 1.2; }
+    .company { color: var(--teal); font-weight: 600; margin-top: 4px; }
+    .lead { max-width: 680px; color: #d7def0; font-size: 17px; margin: 22px 0 0; }
+    .badges { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 13px;
+      color: #e8eefc;
+    }
+    main { padding: 40px 20px 20px; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 22px; margin: 0 0 14px; }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 6px; height: 20px;
+      background: var(--red);
+      border-radius: 3px;
+      margin-right: 10px;
+      vertical-align: -3px;
+    }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(20, 33, 61, 0.06);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 17px; }
+    .card p, .card li { color: var(--muted); font-size: 15px; margin: 0; }
+    .card ul { padding-left: 18px; margin: 0; }
+    .card li + li { margin-top: 6px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: var(--radius); overflow: hidden; }
+    th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    th { background: #eef2fa; }
+    td { color: var(--muted); }
+    td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+    pre {
+      background: #0b1220;
+      color: #e8eefc;
+      padding: 16px 18px;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 14px;
+      margin: 0 0 12px;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    p.note { color: var(--muted); font-size: 15px; margin: 10px 0 0; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 20px 40px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img src="public/brand/logo.jpg" alt="Impress Newtex logo">
+      <div>
+        <h1>INCTL Knitting Technical Work Monitoring</h1>
+        <div class="company">Impress Newtex Composite Textile Ltd</div>
+      </div>
+    </div>
+    <p class="lead">
+      Start and stop timing for every technical job on the knitting floor, import the working sheet from Excel,
+      and see how each technician, supervisor and executive is performing, daily, weekly or monthly.
+    </p>
+    <div class="badges">
+      <span class="badge">Node.js 22.13+</span>
+      <span class="badge">SQLite, no install needed</span>
+      <span class="badge">Works on computer and phone</span>
+      <span class="badge">Role-based sign-in</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Live job timer</h3>
+        <p>Start a job when the technician begins and stop it when the work is finished. The start and end times are recorded automatically.</p>
+      </div>
+      <div class="card">
+        <h3>Machine and gauge</h3>
+        <p>Pick the machine from the fixed list of 142 machines. Brand and dia fill in. The gauge is set per job.</p>
+      </div>
+      <div class="card">
+        <h3>Excel import</h3>
+        <p>Upload the working sheet. Preview it first, then import. Re-importing the same file never duplicates jobs.</p>
+      </div>
+      <div class="card">
+        <h3>Performance dashboard</h3>
+        <p>Standard versus actual time for each job, with extra and saved hours. Filter by day, week or month, technician, supervisor or executive.</p>
+      </div>
+      <div class="card">
+        <h3>Skill matrix</h3>
+        <p>Each technician rated against each job family, from Expert to Developing. Gaps show where training is needed.</p>
+      </div>
+      <div class="card">
+        <h3>Machine view</h3>
+        <p>Efficiency and extra time per machine, with the technicians who work on it. Machines are flagged for training when they fall below 85%.</p>
+      </div>
+      <div class="card">
+        <h3>Data checks</h3>
+        <p>Flags jobs with a missing person, a start before the machine stopped, or no end time, so records can be corrected.</p>
+      </div>
+      <div class="card">
+        <h3>Standard names</h3>
+        <p>Spelling variants of a person's name are changed to one standard name on every task, on import and on entry.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who can do what</h2>
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Can do</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Admin</td><td>Everything: create and block users, change roles, manage people, import Excel, enter and edit tasks.</td></tr>
+        <tr><td>User</td><td>Enter and edit tasks, import Excel, view all reports.</td></tr>
+        <tr><td>Viewer</td><td>View the performance dashboard and the task list. Cannot change anything.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Only email addresses an admin has created can sign in. Accounts start with a temporary password that the user changes at first sign-in.</p>
+  </section>
+
+  <section>
+    <h2>Run it on your computer</h2>
+    <pre><code>cd technical-task-tracker
+npm start</code></pre>
+    <p class="note">Then open <code>http://localhost:3000</code>. On a phone on the same Wi-Fi, open <code>http://&lt;this-computer-IP&gt;:3000</code>.</p>
+    <p class="note">The first time, create the master admin in a separate terminal:</p>
+    <pre><code>npm run create-admin</code></pre>
+    <p class="note">Other commands: <code>npm test</code> runs the test suite. <code>npm run apply-roster</code> updates an existing database to the current responsible list.</p>
+  </section>
+
+  <section>
+    <h2>Project layout</h2>
+    <table>
+      <thead>
+        <tr><th>Path</th><th>What is in it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>server.js</td><td>HTTP server and the API routes</td></tr>
+        <tr><td>lib/</td><td>Calculations, database, sign-in, people, machines, Excel import and analytics</td></tr>
+        <tr><td>public/</td><td>The web app: <code>index.html</code>, <code>app.js</code>, <code>dashboard.js</code>, <code>analytics.js</code>, <code>style.css</code></td></tr>
+        <tr><td>scripts/</td><td>Admin setup and roster update scripts</td></tr>
+        <tr><td>test/</td><td>Automated tests, with the workbook fixtures they use</td></tr>
+        <tr><td>data/</td><td>The live database (<code>tasks.db</code>). Created on first run. Keep it out of GitHub.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <div>Impress Newtex Composite Textile Ltd · Made by Kamal Ahmed, HOD · Knitting Department</div>
+</footer>
+
+</body>
+</html>
